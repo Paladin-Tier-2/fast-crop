@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/home/eko/bin/fast-crop
+Name=Fast-Crop
+NoDisplay=true
+StartupNotify=false
+Type=Application
+X-KDE-GlobalAccel-CommandShortcut=true
+X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2
