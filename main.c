@@ -171,13 +171,12 @@ static int write_png_to_stream(FILE *output, unsigned char *pixels, uint32_t wid
         return 1;
     }
     png_init_io(png_ptr, output);
-    png_set_compression_level(png_ptr, 0);
+    png_set_compression_level(png_ptr, 1);
+    png_set_sRGB_gAMA_and_cHRM(png_ptr, info_ptr, PNG_sRGB_INTENT_PERCEPTUAL);
     png_set_IHDR(png_ptr, info_ptr, width, height, 8,
                  PNG_COLOR_TYPE_RGBA, PNG_INTERLACE_NONE,
                  PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
     png_write_info(png_ptr, info_ptr);
-    // KWin supplies BGRA pixels; PNG stores RGBA.
-    png_set_bgr(png_ptr);
 
     for (uint32_t y = 0; y < height; y++) {
         png_write_row(png_ptr, pixels + (size_t)y * stride);
